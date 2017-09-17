@@ -1,0 +1,43 @@
+  
+
+<div class="container" style="margin-top:10px;">
+    <div id="mydraws"class="row form-group">
+        <form id="newForm" action="draw" method="post">
+            
+            <label for="male">BIENVENIDO USUARIO: </label>
+            <label type="text" name="username" id="username" value="username"></label><br><br>
+            
+        
+        
+            <div class="col-xs-8 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <input type="text" name="title" id="title" tabindex="1" placeholder="Título" value="">
+                    </div>
+                    <div class="panel-image">
+                        <a><span id="new" class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                    </div>
+                <div class="panel-body">
+                    <h4>Nuevo!</h4>
+                    <p>No usar espacios en el titulo</p>
+                </div>
+            </div>
+            </div>
+                {{#each data}}
+                <a id="loadDiagram" href="/draw?title={{this.title}}&username=">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{this.title}}</div>
+                        <div class="panel-image">
+                            <img src="/img/powerpoint-flowchart.png" class="panel-image-preview">
+                        </div>
+                        <div class="panel-body">
+                            <p>Creado por el</p>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            {{/each}}
+        </form>
+	</div>
+</div>
