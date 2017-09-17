@@ -7,8 +7,6 @@ var app = express()
  
 var flowcharts = require('./routes/flowcharts');
 
-
-
 app.use(express.static('public')) //seteo la ruta de mis archivos estaticos
 
 //add handlebars view engine
