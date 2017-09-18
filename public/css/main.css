@@ -174,3 +174,88 @@ a:hover > .glyphicon{
       background-color: #f2f2f2;
       padding: 25px;
     }
+    
+    
+ .fcirculo{
+ 	background-image:url('../img/circulo');
+background-repeat:no-repeat;
+  
+ 	width: 33px;
+ 	height: 33px;
+
+ }
+
+  .ftriangulo{
+ 	background-image:url('../img/triangulo');
+background-repeat:no-repeat;
+  
+ 	width: 33px;
+ 	height: 33px;
+ }
+
+  .fzigzag{
+ 	background-image:url('../img/zigzag');
+background-repeat:no-repeat;
+  
+ 	width: 33px;
+ 	height: 33px;
+ 	
+ }
+ .letra{
+ 	font-style: italic;
+    font-family: sans-serif;
+  
+    color: slateblue;
+ }
+
+ .btnColorUno{
+    background-color: #b8ecdd;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    padding: 20px 20px;
+    position: absolute;
+    left: 50px;
+    
+}
+.btnColorDos{
+    background-color: #f4cc83;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    padding: 20px 20px;
+    position: absolute;
+    left: 100px;
+    
+}
+.btnColorTres{
+    background-color: #d9c9e3;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    padding: 20px 20px;
+    position: absolute;
+    left: 150px;
+    
+}
+#color{
+ 
+    position: absolute;
+    top: 840px;
+    left: 200px;
+}   

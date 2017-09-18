@@ -28,10 +28,6 @@ app.use(function(req,res){
   res.render('404');
 });
 
- 
-
-
-
 app.set('port',process.env.PORT || 3000,  process.env.IP || '0.0.0.0', function(){
     console.log(app.get('port'));
     
@@ -40,7 +36,7 @@ app.set('port',process.env.PORT || 3000,  process.env.IP || '0.0.0.0', function(
 
 app.listen(app.get('port'), function () {
     console.log(app.get('port'));
-  console.log('Example app listening on port 3000!')
+  console.log('Example app listening on port 3000 :)')
 });
 
 module.exports = app;

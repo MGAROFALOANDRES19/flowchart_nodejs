@@ -18,7 +18,8 @@ $(function() {
     /* carga el user*/
     console.log(getQueryVariable("username"));
     $('#username').text(getQueryVariable("username"));
-    $('#loadDiagram').attr('href',$('#loadDiagram').attr('href')+getQueryVariable("username"));
+    /*$('#loadDiagram').attr('href',$('#loadDiagram').attr('href')+getQueryVariable("username"));
+    console.log($('#loadDiagram').attr('href'));*/
     /*carga los draws*/
         $.each(data, function(i, item) {
             console.log(getQueryVariable("username"));

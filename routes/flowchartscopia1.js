@@ -75,7 +75,7 @@ router.get('/mydraws', isAuthenticated ,function(req,res){
     
     pool.getConnection(function(error,conn){
        
-       var queryString = "select * from flowcharts where users_username = '"+req.query.username+"'";
+       var queryString = "select title from flowcharts where users_username = '"+req.query.username+"'";
        
        conn.query(queryString,function(error,results){
            if(error)
@@ -85,7 +85,8 @@ router.get('/mydraws', isAuthenticated ,function(req,res){
            else 
                {
                    console.log(results);
-                   res.render('mydraws',{data:results,sesion:'Logout',error:null});
+                   
+                   res.render('mydraws',{data:results,sesion:'Logout', regresar:'Atras',error:null});
                  
                  /*res.render('mydraws');*/
                }
@@ -113,6 +114,7 @@ router.post('/draw', isAuthenticated, function(req,res){
                }
            else 
                {
+                 
                  res.redirect('draw?title='+req.body.title+'&username='+req.query.username);
                }
            
@@ -136,7 +138,8 @@ router.get('/draw', isAuthenticated, function(req,res){
            else 
                {
                    console.log(results);
-                   res.render('draw',{data:results,retornar:'Atras',error:null});
+                   
+                   res.render('draw',{data:results,retornar:'Atras',sesion:'Logout',error:null});
                  //res.render('mydraws');
                }
            
@@ -151,6 +154,10 @@ router.get('/draw', isAuthenticated, function(req,res){
 router.get('/', function(req,res){
   res.render('home', {sesion:'Login'});
 });
+
+
+
+module.exports = router;
 
 router.post('/save', isAuthenticated, function(req,res){
      pool.getConnection(function(error,conn){
@@ -175,97 +182,6 @@ router.post('/save', isAuthenticated, function(req,res){
     
 });
 
-
-////////////////////////////////**************************REST**************************////////////////////
-router.get('/flowcharts/:title',function(req,res,next){
-
-if(req.params.title){
-    console.log(req.params.title);
-    pool.query("select * from flowcharts where title='"+ req.params.title +"'",function(err,rows){
-
-        if(err)
-        {
-            res.json(err);
-        }
-        else{
-            res.json(rows);
-        }
-    });
-}
-});
-router.post('/flowcharts/:title/:users_username/:models',function(req,res,next){
-
-if(req.params){
-    console.log(req.params.title);
-    pool.query("insert into flowcharts(title,users_username, model) values('"+ req.params.title +"', '"+ req.params.users_username +"', '"+ req.params.models+"')",function(err,rows){
-
-        if(err)
-        {
-            res.json(err);
-        }
-        else{
-            res.json(rows);
-        }
-    });
-}
-});
-
-router.delete('/flowcharts/:title',function(req,res,next){
-
-if(req.params.title){
-    console.log(req.params.title);
-    pool.query("delete from flowcharts where title='"+ req.params.title +"'",function(err,rows){
-        if(err)
-        {
-            res.json(err);
-        }
-        else{
-            res.json(rows);
-        }
-    });
-}
-});
-
-router.put('/flowcharts/:title/:users_username/:models',function(req,res,next){
-
-if(req.params){
-    console.log(req.params.title);
-    pool.query("update flowcharts set users_username='"+req.params.users_username+"', model='"+ req.params.models+"' where  title='" +  req.params.title +"'",function(err,rows){
-
-        if(err)
-        {
-            res.json(err);
-        }
-        else{
-            res.json(rows);
-        }
-    });
-}
-});
-
-
-
-
-
-
-router.get('/flowcharts',function(req,res,next){
-
-
-    pool.query("select * from flowcharts",function(err,rows){
-
-        if(err)
-        {
-            res.json(err);
-        }
-        else{
-            res.json(rows);
-        }
-    });
-
-});
-
-
-
 function isAuthenticated(req, res, next) {
 
     // do any checks you want to in here
@@ -281,4 +197,5 @@ function isAuthenticated(req, res, next) {
 
 
 module.exports = router;
+
 

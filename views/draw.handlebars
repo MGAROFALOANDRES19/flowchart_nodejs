@@ -3,10 +3,8 @@
         <li id="username">{{username}}</li>
         <li id="title">{{title}}</li>
       </ul>-->
-
-      <br><br>
-      <button onclick="flecha()">Cambiar flecha</button>
-
+      
+      <br>
 <div id="sample">
   <div>
     <span>
@@ -17,6 +15,23 @@
       <div id="myDiagramDiv"></div>
     </span>
   </div>
+  <div>
+<h4 class="letra">Cambiar de flechas</h4>
+     
+      <button onclick="flecha()" class="fcirculo"></button>
+      <button onclick="flechatriangulo()" class="ftriangulo"></button>
+      <button onclick="flechaZigzag()" class="fzigzag"></button>
+      <br><br><br><br>
+
+</div>
+<div id="color">
+        <h4 class="letra">Cambiar color a tu area de trabajo</h4>
+         
+        <button onclick="fondouno()" class="btnColorUno"></button>    
+        <button  onclick="fondodos()" class="btnColorDos"></button> 
+        <button  onclick="fondouno()" class="btnColorTres"></button>          
+    </div>
+
  <form role="form" id="saveLoad" action="save" method="post">
   <button id="SaveButton" onclick="save()">Save</button>
   <button onclick="load()">Load</button>
@@ -30,3 +45,5 @@
   <div id="SVGArea"></div>
      </form>
 </div>
+<br>
+

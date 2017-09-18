@@ -1,7 +1,10 @@
  function init() {
-   if(localStorage.getItem("flecha") === null ||  localStorage.getItem("flecha") === undefined){
-     localStorage.setItem("flecha", "triangle")
+   if(localStorage.getItem("flechaZigzag") === null ||  localStorage.getItem("flechaZigzag") === undefined){
+     localStorage.setItem("flechaZigzag", "Zigzag")
+
+
    }
+
    
    cargar();
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
@@ -305,7 +308,7 @@ go.Shape.defineArrowheadGeometry("PentagonArrow", "F1 m 8,4 l -4,-4 -4,0 0,8 4,0
         $(go.Shape,  // the link path shape
           { isPanelMain: true, stroke: "gray", strokeWidth: 2 }),
         $(go.Shape,  // the arrowhead
-          { toArrow: localStorage.getItem("flecha"), fill: "gray"}),
+          { toArrow:  localStorage.getItem("flechaZigzag") ||  localStorage.getItem("flecha") ||  localStorage.getItem("flechatriangulo") , fill: "gray"}),
         $(go.Panel, "Auto",  // the link label, normally not visible
           { visible: false, name: "LABEL", segmentIndex: 2, segmentFraction: 0.5},
           new go.Binding("visible", "visible").makeTwoWay(),
@@ -485,8 +488,46 @@ catch(err) {
     $('.exportar').attr('download', 'datos.json'); // indico el nombre con el cual se descargará el archivo
     $('.exportar').trigger('click'); // El trigger() método activa el evento especificado y el comportamiento predeterminado de un evento */
     
-  localStorage.setItem("flecha", "circle");
+  localStorage.setItem("flechaZigzag", "circle");
   location.reload();
       
    
 }
+function flechatriangulo(){
+    
+    
+  localStorage.setItem("flechaZigzag", "Triangle");
+  location.reload();
+      
+   
+}
+
+function flechaZigzag(){
+   
+   
+  localStorage.setItem("flechaZigzag", "Zigzag");
+  location.reload();
+      
+   
+}
+
+function fondouno(){            
+        console.log("fghjkl;'");
+        
+        $("#myDiagramDiv").css("background-color","#b8ecdd");
+        
+        }
+function fondodos(){            
+       
+        
+        $("#myDiagramDiv").css("background-color","#f4cc83");
+        
+}
+
+function fondotres(){            
+       
+        
+        $("#myDiagramDiv").css("background-color","#d9c9e3");
+        
+}
+ 
