@@ -3,7 +3,7 @@
         <li id="username">{{username}}</li>
         <li id="title">{{title}}</li>
       </ul>-->
-      
+{{#each data}}      
       <br>
 <div id="sample">
   <div>
@@ -12,38 +12,44 @@
     </span>
 
     <span class="width80">
-      <div id="myDiagramDiv"></div>
+      <div id="myDiagramDiv" style="background-color:{{this.color}}"></div>
     </span>
   </div>
   <div>
 <h4 class="letra">Cambiar de flechas</h4>
      
-      <button onclick="flecha()" class="fcirculo"></button>
-      <button onclick="flechatriangulo()" class="ftriangulo"></button>
-      <button onclick="flechaZigzag()" class="fzigzag"></button>
+      <button class="fcirculo" id="fcirculo"></button>
+      <button class="ftriangulo" id="ftriangulo"></button>
+      <button class="fzigzag" id="fzigzag"></button>
       <br><br><br><br>
 
 </div>
 <div id="color">
         <h4 class="letra">Cambiar color a tu area de trabajo</h4>
          
-        <button onclick="fondouno()" class="btnColorUno"></button>    
-        <button  onclick="fondodos()" class="btnColorDos"></button> 
-        <button  onclick="fondouno()" class="btnColorTres"></button>          
+        <button  id="color1" class="btnColorUno"></button>    
+        <button   id="color2" class="btnColorDos"></button> 
+        <button   id="color3" class="btnColorTres"></button>          
     </div>
+  <div>
+        <h4>Cambiar color a paso</h4>
+         
+        <button id="changeB">Cambiar color figura</button>    
+                 </div>  
 
  <form role="form" id="saveLoad" action="save" method="post">
   <button id="SaveButton" onclick="save()">Save</button>
   <button onclick="load()">Load</button>
   Diagram Model saved in JSON format:<br>
   <textarea name="mySavedModel" id="mySavedModel" style="width:100%;height:300px">
-  {{#each data}}
+  
 {{this.model}}
-{{/each}}
+
   </textarea>
   <!--<button onclick="makeSVG()">Render as SVG</button>-->
   <div id="SVGArea"></div>
      </form>
 </div>
+{{/each}}
 <br>
 

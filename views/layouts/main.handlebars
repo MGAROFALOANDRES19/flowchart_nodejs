@@ -14,7 +14,7 @@
         <script src="/js/main.js"></script>
 		<title>Flowchart</title>
 	</head>
-<body onload="init()">
+<body {{{ onload }}} >
 
 <nav class="navbar navbar-inverse" style="background:#439788;border: #439788">
   <div class="container-fluid">
@@ -28,7 +28,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/mydraws" style="color:#fff;">{{{regresar}}}</a></li>
+        <li><a id="regresar" href="/mydraws?username=" style="color:#fff;">{{{regresar}}}</a></li>
         <li><a href="/login" style="color:#fff;">{{{sesion}}}</a></li>
       </ul>
     </div>

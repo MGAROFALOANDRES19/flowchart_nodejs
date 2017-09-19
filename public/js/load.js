@@ -1,75 +1,6 @@
 $(function() {
-    
-    
-   
-    
-    var data = JSON.parse(localStorage.getItem("users"));
-       
-    function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-}    
-    /* carga el user*/
-    console.log(getQueryVariable("username"));
-    $('#username').text(getQueryVariable("username"));
-    /*$('#loadDiagram').attr('href',$('#loadDiagram').attr('href')+getQueryVariable("username"));
-    console.log($('#loadDiagram').attr('href'));*/
-    /*carga los draws*/
-        $.each(data, function(i, item) {
-            console.log(getQueryVariable("username"));
-            if(item.username == getQueryVariable("username")){
-            if(i = "flowcharts"){
-                $.each(item.flowcharts, function(i2, item2) {
-                    
-                   
-                    try {
-                        console.log(item2.title);
-                        if(item2.title != ""){
-                            console.log("yes");
-                            $('#mydraws').append('<div class="col-xs-12 col-sm-6 col-md-3"><a href="draw?title='+ item2.title +'&username='+ getQueryVariable("username") +'"><div class="panel panel-default"><div class="panel-heading">'+ item2.title +'</div> <div class="panel-image"><img src="/img/powerpoint-flowchart.png" class="panel-image-preview" /></div><div class="panel-body"><h4>Creado el</h4></div></a></div></div>');
-                        }
-                    }
-catch(err) {
-    console.log("there is not title");
-}
-                    $('#mySavedModel').val(JSON.stringify(item2.model));
-                });
-               }
-            }
-        });
-       
-       /*carga el titulo*/ 
-       $.each(data, function(i, item) {
-            if(i = "flowcharts"){
-                $.each(item.flowcharts, function(i2, item2) {
-                    
-                   
-                    try {
-    item2.title = getQueryVariable("title");
-}
-catch(err) {
-    console.log("there is not title");
-}
-                    $('#mySavedModel').val(JSON.stringify(item2.model));
-                });
-               }
-        });
-        
-    
-    $('.panel-image img.panel-image-preview').on('click', function(e) {
-        $(this).closest('.panel-image').toggleClass('hide-panel-body');
-    });
-    
-    var myJSON = "";
-    var users = [];
-    
-    
+    /* OBJETOS */
+    /* Objeto USUARIO */    
     class User {
         constructor(username, email, password){
             this.username = username;
@@ -77,6 +8,46 @@ catch(err) {
             this.password = password;
         }
     }
+    
+    
+    /* FUNCIONES PARA SU FUTURO USO */
+    /* FUNCION PARA OBTENER QUERYS DE LA URL   */  
+    function getQueryVariable(variable)
+    {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+        
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+
+       return(false);
+    }    
+    
+    /* ANIMACIONES Y CARGOS A LA URL */
+    /* carga el nombre de usuario en el saludo "BIENVENIDO" o en el Regresar*/
+
+    $('#username').text(getQueryVariable("username"));
+    $('#regresar').attr('href',$('#regresar').attr('href')+getQueryVariable("username"));
+    $('#new').click(function(){
+        
+        /*window.location.href = "draw?title="+$('#title').val()+;*/
+        $('#newForm').attr('action','draw?username='+getQueryVariable("username"));
+        $('#newForm').submit();
+    });
+    
+    $('#color1').click(function(){
+       $('#myDiagramDiv').css('background-color', '#b8ecdd');
+    });
+    
+    $('#color2').click(function(){
+       $('#myDiagramDiv').css('background-color', '#f4cc83');
+    });
+    
+    $('#color3').click(function(){
+       $('#myDiagramDiv').css('background-color', '#d9c9e3');
+    });
     
     $('#login-form-link').click(function(e) {
 		$("#login-form").delay(100).fadeIn(100);
@@ -93,6 +64,7 @@ catch(err) {
 		e.preventDefault();
 	});
     
+    // VALIDACIONES DE FORMULARIOS
     // validate signup form on keyup and submit
 		$("#register-form").validate({
 			rules: {
@@ -133,39 +105,12 @@ catch(err) {
 		});
     
     
-    $('#register-submit').click(function(){
-        
-        window.location.href = "login"
-        
-    });
-    
-    $('#login-submit').click(function(){
-        
-       window.location.href = "mydraws"
-        
-    });
-    
-    $('#new').click(function(){
-        
-        /*window.location.href = "draw?title="+$('#title').val()+;*/
-        $('#newForm').attr('action','draw?username='+getQueryVariable("username"));
-        $('#newForm').submit();
-    });
     
     $('#SaveButton').click(function(){
-        $('#saveLoad').attr('action','save?title='+ getQueryVariable("title") +'&username='+getQueryVariable("username"));
+        $('#saveLoad').attr('action','save?title='+ getQueryVariable("title") +'&username='+getQueryVariable("username")+'&color='+$('#myDiagramDiv').css("background-color"));
+        console.log($('#myDiagramDiv').css("background-color"));
         $('#saveLoad').submit();
     })
     
-    /*$('#SaveButton').click(function(){
-        
-    })*/
-    
- 
-
 });
 
-
-/*$('#loadDiagram').click(function(){
-     window.location.href = '/draw?title='+ getQueryVariable("title") +'&username='+getQueryVariable("username");
-})*/

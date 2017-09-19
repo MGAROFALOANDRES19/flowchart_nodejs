@@ -9,7 +9,8 @@ USE flowcharts;
 CREATE TABLE flowcharts (
     title varchar(25) NOT NULL,
     users_username varchar(25) NOT NULL,
-    model varchar(1000) NOT NULL,
+    model varchar(10000) NOT NULL,
+    color varchar(25),
     CONSTRAINT flowcharflts_pk PRIMARY KEY (title)
 );
 
